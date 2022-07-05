@@ -2,7 +2,6 @@ n = int(input())
 ans = [0] * n
 A = list(map(int, input().split()))
 myStack = []
-myStack.append(0)   # 처음에는 항상 스택이 비어 있으므로 최초 값을 push해 초기화
 for i in range(n):
     # 스택이 비어 있지 않고 현재 수열이 스택 top 인덱스가 가리키는 수열보다 클 경우
     while myStack and A[myStack[-1]] < A[i]:
