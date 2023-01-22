@@ -38,14 +38,16 @@ def partition(S, E):
     i = S + 1
     j = E
     while i <= j:
-        while pivot < A[j] and j > 0:
+        while j>=S and pivot < A[j]:
             j = j - 1
-        while pivot > A[i] and i < len(A)-1:
+        while  i <=E and pivot > A[i] :
             i = i + 1
-        if i <= j:
+        if i < j:
             swap(i, j)
             i = i + 1
             j = j - 1
+        else:
+            break
     # i == j 피벗의 값을 양쪽으로 분리한 가운데에 오도록 설정하기
     A[S] = A[j]
     A[j] = pivot
