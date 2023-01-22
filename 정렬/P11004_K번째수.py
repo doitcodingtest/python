@@ -38,9 +38,9 @@ def partition(S, E):
     i = S + 1
     j = E
     while i <= j:
-        while j>=S and pivot < A[j]:
+        while j >= S and pivot < A[j]:
             j = j - 1
-        while  i <=E and pivot > A[i] :
+        while  i <= E and pivot > A[i] :
             i = i + 1
         if i < j:
             swap(i, j)
