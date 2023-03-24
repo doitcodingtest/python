@@ -9,7 +9,5 @@ for i in range(n):
     myStack.append(i)
 while myStack:  # 반복문을 다 돌고 나왔는데 스택이 비어 있지 않다면 빌 때까지
     ans[myStack.pop()] = -1 #스 택에 쌓인 index에 -1을 넣기
-result =""
 for i in range(n):
-    result += str(ans[i])+" "
-print(result)
+    sys.stdout.write(str(ans[i]) + " ")
