@@ -1,7 +1,5 @@
 import sys
-from collections import deque
 input = sys.stdin.readline
-print = sys.stdout.write
 N = int(input())
 tree = [[] for _ in range(N+1)]
 
@@ -15,26 +13,17 @@ parent = [0]*(N+1)
 visited = [False]*(N+1)
 
 def BFS(node):
-    queue = deque()
-    queue.append(node)
+    queue = [node]
     visited[node] = True
-    level = 1
-    now_size = 1
-    count = 0
     while queue:
-        now_node = queue.popleft()
+        now_node = queue.pop(0)
         for next in tree[now_node]:
             if not visited[next]:
                 visited[next] = True
                 queue.append(next)
                 parent[next] = now_node # 부모 노드 저장
-                depth[next] = level # 노드 depth 저장
-        count += 1
-        if count == now_size:
-            count = 0
-            now_size = len(queue)
-            level += 1
-
+                depth[next] = depth[now_node]+1 # 노드 depth 저장
+       
 BFS(1)
 
 def excuteLCA(a, b):
@@ -53,10 +42,9 @@ def excuteLCA(a, b):
     return a
 
 M = int(input())
+mydict = dict()
 for _ in range(M):
     a, b = map(int, input().split())
-    print(str(excuteLCA(a,b)))
-    print("\n")
-
-
-
+    if not mydict.get((a, b), 0): #같은 질문일 경우 재계산을 하지 않기 위해 딕셔너리 자료형 사용
+        mydict[(a, b)] = mydict[(b, a)] = excuteLCA(a, b)
+    print(mydict.get((a, b)))
