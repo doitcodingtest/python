@@ -24,7 +24,7 @@ def dijkstra(start, end):
         if not visit[now]:
             visit[now] = True
             for n in myList[now]:
-                if not visit[n[0]] and dist[n[0]] > dist[now] + n[1]:
+                if dist[n[0]] > dist[now] + n[1]:
                     dist[n[0]] = dist[now] + n[1]
                     pq.put((dist[n[0]], n[0]))
     return dist[end]
