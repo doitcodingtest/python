@@ -7,6 +7,7 @@ answer = [0] * (N + 1)
 
 
 def BFS(v):
+    visited = [False] * (N + 1)
     queue = deque()
     queue.append(v)
     visited[v] = True
@@ -19,18 +20,14 @@ def BFS(v):
                 queue.append(i)
 
 
-for _ in range(M):
+for i in range(M):
     S, E = map(int, input().split())
     A[S].append(E)
 
 for i in range(1, N + 1):  # 모든 노드에서 BFS 실행
-    visited = [False] * (N + 1)
     BFS(i)
 
-maxVal = 0
-for i in range(1, N + 1):
-    maxVal = max(maxVal, answer[i])
-
+maxVal = max(answer)
 for i in range(1, N + 1):
     if maxVal == answer[i]:
         print(i, end=' ')
